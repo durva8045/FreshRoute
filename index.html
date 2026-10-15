@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreshRoute | Intelligent Perishable Produce Distribution Platform</title>
+  <meta name="description" content="FreshRoute is an intelligent decision-support platform that coordinates inventory shelf-life, destination demand, market prices, and vehicle capacity to slash produce food waste and maximize distributor net profit.">
+  <link rel="icon" type="image/png" href="FreshRoute Eco Delivery Logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Chart.js for Interactive Metrics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    🌱 <strong>FreshRoute v2.4 Released:</strong> Introducing dynamic shelf-life decay modeling &amp; multi-compartment reefer allocation.
+    <a href="#simulator">Try Live Simulator →</a>
+  </div>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container-wide nav-wrap">
+      <a href="#" class="brand-logo" title="FreshRoute Home">
+        <img src="FreshRoute Eco Delivery Logo.png" alt="FreshRoute Eco Delivery Logo">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#problem" class="nav-link">The Challenge</a></li>
+          <li><a href="#simulator" class="nav-link">Live Platform</a></li>
+          <li><a href="#comparison" class="nav-link">Baseline vs FreshRoute</a></li>
+          <li><a href="#explainable-ai" class="nav-link">Explainable AI</a></li>
+          <li><a href="#features" class="nav-link">Capabilities</a></li>
+          <li><a href="#roi-calculator" class="nav-link">ROI Calculator</a></li>
+          <li><a href="#cases" class="nav-link">Case Studies</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>Engine v2.4 Active</span>
+        </div>
+        <button class="btn btn-primary" data-open-modal="demoModal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Schedule Demo
+        </button>
+        <button class="mobile-menu-btn" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <div class="hero-pill">
+          <span class="hero-pill-badge">Decision Support</span>
+          <span>Smarter, Efficient &amp; Sustainable Produce Distribution</span>
+        </div>
+
+        <h1 class="hero-title">
+          Stop Perishable Waste <br>
+          <span class="text-gradient">Before It Happens.</span>
+        </h1>
+
+        <p class="hero-desc">
+          FreshRoute is an intelligent decision-support platform for fruit and vegetable distributors.
+          We coordinate <strong>inventory vitality, remaining shelf life, destination demand, spot market prices, transportation costs,</strong> and <strong>vehicle capacity</strong> into one automated, explainable dispatch plan.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#simulator" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Explore Live Simulator
+          </a>
+          <a href="#comparison" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            View Baseline Comparison
+          </a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="hero-metric-item">
+            <h4>86.8%</h4>
+            <p>Spoilage Reduction</p>
+          </div>
+          <div class="hero-metric-item">
+            <h4>+28.4%</h4>
+            <p>Net Margin Increase</p>
+          </div>
+          <div class="hero-metric-item">
+            <h4>97.2%</h4>
+            <p>Demand Fulfillment</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Interactive Dashboard Card Preview -->
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="card-title-group">
+              <div class="card-icon-bubble">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+              </div>
+              <div>
+                <h3>Real-Time Dispatch Priority</h3>
+                <p>Live Intake • Distribution Hub #04</p>
+              </div>
+            </div>
+            <div class="card-badge-pulse">
+              <span class="status-dot"></span>
+              Optimized
+            </div>
+          </div>
+
+          <div class="hero-card-body">
+            <!-- Batch item 1 -->
+            <div class="batch-strip">
+              <div class="batch-crop-info">
+                <span class="crop-emoji">🍓</span>
+                <div>
+                  <div class="crop-name">Organic Strawberries (Batch #814)</div>
+                  <div class="crop-sub">1,800 kg • Rapid Respiration</div>
+                </div>
+              </div>
+              <div class="shelf-life-meter">
+                <div class="meter-val critical">18 hrs Left</div>
+                <div class="meter-bar"><div class="meter-fill critical"></div></div>
+              </div>
+            </div>
+
+            <!-- Batch item 2 -->
+            <div class="batch-strip">
+              <div class="batch-crop-info">
+                <span class="crop-emoji">🥑</span>
+                <div>
+                  <div class="crop-name">Haas Avocados (Batch #809)</div>
+                  <div class="crop-sub">3,200 kg • Ripening Tier B</div>
+                </div>
+              </div>
+              <div class="shelf-life-meter">
+                <div class="meter-val warning">28 hrs Left</div>
+                <div class="meter-bar"><div class="meter-fill warning"></div></div>
+              </div>
+            </div>
+
+            <!-- Batch item 3 -->
+            <div class="batch-strip">
+              <div class="batch-crop-info">
+                <span class="crop-emoji">🍅</span>
+                <div>
+                  <div class="crop-name">Roma Tomatoes (Batch #802)</div>
+                  <div class="crop-sub">5,400 kg • High Ethylene</div>
+                </div>
+              </div>
+              <div class="shelf-life-meter">
+                <div class="meter-val safe">42 hrs Left</div>
+                <div class="meter-bar"><div class="meter-fill safe"></div></div>
+              </div>
+            </div>
+
+            <!-- Explainable AI Recommendation Box -->
+            <div class="hero-ai-recommendation-box">
+              <div class="rec-header">
+                <span class="rec-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  Explainable Decision
+                </span>
+                <span class="rec-benefit">+$4,600 Saved</span>
+              </div>
+              <p class="rec-text">
+                <strong>Batch #814 Strawberries:</strong> Auto-applied <strong>15% Flash Markdown</strong> to Quick-Commerce Dark Stores (1.4h transit). Bypasses slow wholesale queues, ensuring 100% offload before decay threshold.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Challenge: The Perishable Paradox -->
+  <section class="section-problem" id="problem">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">The Perishable Paradox</span>
+        <h2 class="section-title">The High Cost of Blind Distribution</h2>
+        <p class="section-subtitle">
+          Distributors of fruits and vegetables face an unforgiving multi-variable balancing act every single morning.
+        </p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon-wrap red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3>Decaying Shelf Life</h3>
+          <p>Every hour in ambient temperature or transit delays eats away quality. Traditional FIFO schedules frequently dispatch older batches to distant hubs where they arrive unsaleable.</p>
+          <div class="problem-stat">14-22% Typical Cold Chain Loss</div>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-icon-wrap orange">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 20V10"></path>
+              <path d="M12 20V4"></path>
+              <path d="M6 20v-6"></path>
+            </svg>
+          </div>
+          <h3>Fragmented Market Demand</h3>
+          <p>Supermarket chains, quick-commerce dark stores, and wholesale mandis experience erratic intraday demand spikes and fluctuating spot market prices that static spreadsheets cannot match.</p>
+          <div class="problem-stat">Up to 28% Stock-Out Inefficiencies</div>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-icon-wrap yellow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <h3>Mismatched Fleet Capacity</h3>
+          <p>Reefer trucks operate with low payload utilization or mixed incompatibility (such as placing ethylene-producing tomatoes with sensitive leafy greens), inflating freight cost per kilogram.</p>
+          <div class="problem-stat">32% Empty Cargo Cubic Volume</div>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-icon-wrap blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path>
+            </svg>
+          </div>
+          <h3>Untimed Distress Markdowns</h3>
+          <p>Distributors wait until produce visibly degrades before offering discounts, resulting in catastrophic zero-dollar write-offs instead of proactive profit-capturing dynamic markdowns.</p>
+          <div class="problem-stat">Millions Dumped in Landfills Annually</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Platform Simulator -->
+  <section class="section-simulator" id="simulator">
+    <div class="container-wide">
+      <div class="text-center">
+        <span class="section-badge">Interactive Control Room</span>
+        <h2 class="section-title">The FreshRoute Decision Engine</h2>
+        <p class="section-subtitle">
+          Test real-time optimization live. Adjust transit conditions, traffic delays, and market temperature to observe how FreshRoute re-allocates batches, protects margins, and triggers dynamic markdowns.
+        </p>
+      </div>
+
+      <div class="simulator-wrapper">
+        <!-- Simulator Top Toolbar -->
+        <div class="sim-topbar">
+          <div class="sim-topbar-left">
+            <span class="sim-mode-badge">
+              <span class="status-dot"></span>
+              Live Allocation Engine
+            </span>
+            <div class="sim-scenario-selector">
+              <label for="simScenarioSelect">Preloaded Scenario:</label>
+              <select id="simScenarioSelect" class="sim-select">
+                <option value="standard">Nominal Daily Cycle (24°C, 1.0h transit delay)</option>
+                <option value="heatwave" selected>Peak Summer Heatwave (34°C, 3.5h delay)</option>
+                <option value="peak_demand">Festive Retail Surge (High Supermarket Premium)</option>
+                <option value="congestion">Interstate Highway Closure (High Route Delay)</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="runSimBtn" class="btn btn-accent btn-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            Re-Optimize Dispatch Plan
+          </button>
+        </div>
+
+        <!-- Simulator Layout: Left Controls + Right Workbench -->
+        <div class="simulator-layout">
+          <!-- Left Controls Panel -->
+          <div class="sim-controls-panel">
+            <div class="sim-control-group">
+              <h4>
+                <span>Environmental Stress</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2">
+                  <path d="M12 2v2"></path>
+                  <path d="M12 20v2"></path>
+                  <path d="m4.93 4.93 1.41 1.41"></path>
+                  <path d="m17.66 17.66 1.41 1.41"></path>
+                  <path d="M2 12h2"></path>
+                  <path d="M20 12h2"></path>
+                  <path d="m6.34 17.66-1.41 1.41"></path>
+                  <path d="m19.07 4.93-1.41 1.41"></path>
+                </svg>
+              </h4>
+
+              <div class="param-slider-item">
+                <div class="param-label-row">
+                  <span>Ambient Route Temp</span>
+                  <span id="simTempVal" class="param-val-badge">34°C</span>
+                </div>
+                <input type="range" id="simTempSlider" class="range-input" min="15" max="42" value="34" step="1">
+              </div>
+
+              <div class="param-slider-item">
+                <div class="param-label-row">
+                  <span>Highway Transit Delay</span>
+                  <span id="simDelayVal" class="param-val-badge">3.5 hrs</span>
+                </div>
+                <input type="range" id="simDelaySlider" class="range-input" min="0" max="8" value="3.5" step="0.5">
+              </div>
+
+              <div class="param-slider-item">
+                <div class="param-label-row">
+                  <span>Reefer Freight Rate</span>
+                  <span id="simFuelVal" class="param-val-badge">$2.40/km</span>
+                </div>
+                <input type="range" id="simFuelSlider" class="range-input" min="1.0" max="3.5" value="2.4" step="0.1">
+              </div>
+            </div>
+
+            <div class="sim-control-group">
+              <h4>
+                <span>Produce Batches Ingested</span>
+                <span style="font-size:0.75rem; color:#64748B;">4 Active</span>
+              </h4>
+
+              <div class="inventory-batch-picker">
+                <div class="batch-select-pill active">
+                  <div class="batch-pill-info">
+                    <span class="batch-pill-name">🥑 Haas Avocados</span>
+                    <span class="batch-pill-meta">FR-809 • 3,200 kg • 28h shelf</span>
+                  </div>
+                  <input type="checkbox" checked disabled>
+                </div>
+
+                <div class="batch-select-pill active">
+                  <div class="batch-pill-info">
+                    <span class="batch-pill-name">🍓 Organic Strawberries</span>
+                    <span class="batch-pill-meta">FR-814 • 1,800 kg • 19h shelf</span>
+                  </div>
+                  <input type="checkbox" checked disabled>
+                </div>
+
+                <div class="batch-select-pill active">
+                  <div class="batch-pill-info">
+                    <span class="batch-pill-name">🍅 Roma Field Tomatoes</span>
+                    <span class="batch-pill-meta">FR-802 • 5,400 kg • 42h shelf</span>
+                  </div>
+                  <input type="checkbox" checked disabled>
+                </div>
+
+                <div class="batch-select-pill active">
+                  <div class="batch-pill-info">
+                    <span class="batch-pill-name">🫑 Crisp Bell Peppers</span>
+                    <span class="batch-pill-meta">FR-791 • 2,600 kg • 56h shelf</span>
+                  </div>
+                  <input type="checkbox" checked disabled>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Simulator Workbench -->
+          <div class="sim-workbench">
+            <div class="sim-actions-strip">
+              <div class="sim-summary-stats">
+                <div class="sim-stat-pill">
+                  <span class="sim-stat-label">Estimated Loss Prevented</span>
+                  <span id="simLossSaved" class="sim-stat-value highlight">$13,100</span>
+                </div>
+                <div class="sim-stat-pill">
+                  <span class="sim-stat-label">Demand Fulfillment</span>
+                  <span id="simFulfillmentRate" class="sim-stat-value">98.4%</span>
+                </div>
+                <div class="sim-stat-pill">
+                  <span class="sim-stat-label">Net Projected Margin</span>
+                  <span id="simNetRevenue" class="sim-stat-value">$33,450</span>
+                </div>
+              </div>
+
+              <div style="font-size:0.8rem; color:#64748B;">
+                ⚡ Computed via FreshRoute Multi-Compartment LP Solver
+              </div>
+            </div>
+
+            <!-- Dynamic Decision Cards Grid -->
+            <div class="sim-results-grid" id="simResultsContainer">
+              <!-- Dynamically populated via script.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Head-to-Head Comparison: FreshRoute vs Baseline Strategy -->
+  <section class="section-comparison" id="comparison">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">Head-to-Head Proof</span>
+        <h2 class="section-title">FreshRoute vs. Traditional Baseline</h2>
+        <p class="section-subtitle">
+          FreshRoute rigorously benchmarks its optimized distribution plan against standard FIFO (First-In, First-Out) and static regional allocation across four critical operational dimensions.
+        </p>
+      </div>
+
+      <div class="comparison-toggle-bar">
+        <button class="comparison-toggle-btn active" data-view="all">All Metrics</button>
+        <button class="comparison-toggle-btn" data-view="spoilage">Estimated Spoilage</button>
+        <button class="comparison-toggle-btn" data-view="fulfillment">Demand Fulfillment</button>
+        <button class="comparison-toggle-btn" data-view="transport">Transportation Costs</button>
+        <button class="comparison-toggle-btn" data-view="revenue">Net Revenue</button>
+      </div>
+
+      <div class="comparison-grid">
+        <!-- Metric 1: Spoilage -->
+        <div class="comp-metric-card winner" data-category="spoilage">
+          <div class="comp-card-badge gain">-86.8% Waste</div>
+          <div class="comp-metric-icon" style="background:#DCFCE7; color:#15803D;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Estimated Spoilage Rate</h3>
+          <p>Perishable produce reaching customer past acceptable freshness threshold or dumped in transit.</p>
+
+          <div class="comp-meter-comparison">
+            <div class="meter-track-group">
+              <div class="meter-track-label baseline">
+                <span>Baseline (FIFO)</span>
+                <span>18.2% Spoilage</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-progress baseline-bar" style="width: 18.2%;"></div>
+              </div>
+            </div>
+
+            <div class="meter-track-group">
+              <div class="meter-track-label freshroute">
+                <span>FreshRoute AI</span>
+                <span>2.4% Spoilage</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-progress freshroute-bar" style="width: 2.4%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 2: Demand Fulfillment -->
+        <div class="comp-metric-card winner" data-category="fulfillment">
+          <div class="comp-card-badge gain">+20.7% Fill</div>
+          <div class="comp-metric-icon" style="background:#E0F2FE; color:#0369A1;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h3>Destination Fulfillment</h3>
+          <p>Orders delivered complete on-time without stock-outs at supermarkets and dark stores.</p>
+
+          <div class="comp-meter-comparison">
+            <div class="meter-track-group">
+              <div class="meter-track-label baseline">
+                <span>Baseline (FIFO)</span>
+                <span>76.5% Fulfilled</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-progress baseline-bar" style="width: 76.5%;"></div>
+              </div>
+            </div>
+
+            <div class="meter-track-group">
+              <div class="meter-track-label freshroute">
+                <span>FreshRoute AI</span>
+                <span>97.2% Fulfilled</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-progress freshroute-bar" style="width: 97.2%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 3: Transportation Cost -->
+        <div class="comp-metric-card winner" data-category="transport">
+          <div class="comp-card-badge saved">-$6,300 Saved</div>
+          <div class="comp-metric-icon" style="background:#FEF3C7; color:#B45309;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <h3>Transportation Expenses</h3>
+          <p>Direct fleet fuel, reefer refrigeration run-time, and empty backhaul mileage per dispatch run.</p>
+
+          <div class="comp-meter-comparison">
+            <div class="meter-track-group">
+              <div class="meter-track-label baseline">
+                <span>Baseline (FIFO)</span>
+                <span>$21,400 / cycle</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-progress baseline-bar" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="meter-track-group">
+              <div class="meter-track-label freshroute">
+                <span>FreshRoute AI</span>
+                <span>$15,100 / cycle</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-progress freshroute-bar" style="width: 58%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 4: Net Revenue -->
+        <div class="comp-metric-card winner" data-category="revenue">
+          <div class="comp-card-badge gain">+$44,600 Net</div>
+          <div class="comp-metric-icon" style="background:#F0FDF4; color:#166534;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Net Realized Revenue</h3>
+          <p>Total cash collected after all spoilage deductions, dynamic discounts, and transport bills.</p>
+
+          <div class="comp-meter-comparison">
+            <div class="meter-track-group">
+              <div class="meter-track-label baseline">
+                <span>Baseline (FIFO)</span>
+                <span>$148,200</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-progress baseline-bar" style="width: 65%;"></div>
+              </div>
+            </div>
+
+            <div class="meter-track-group">
+              <div class="meter-track-label freshroute">
+                <span>FreshRoute AI</span>
+                <span>$192,800 (+30.1%)</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-progress freshroute-bar" style="width: 95%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparative Chart & Detailed Breakdown Matrix -->
+      <div class="comparison-chart-box">
+        <div class="chart-description">
+          <h4>Quantified Dispatch Performance Matrix</h4>
+          <p>
+            Baseline strategies rely on blunt First-In First-Out assumptions that fail when road delays occur or terminal spot prices swing. FreshRoute's multi-objective optimization synchronizes vehicle payload, respiration rates, and localized price elasticity.
+          </p>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Decision Vector</th>
+                <th>Baseline Strategy</th>
+                <th>FreshRoute Platform</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Batch Priority</strong></td>
+                <td>FIFO by warehouse arrival time</td>
+                <td><strong>Dynamic biochemical shelf-life remaining</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Destination Match</strong></td>
+                <td>Fixed regional territories</td>
+                <td><strong>Transit time vs spot price arbitrage</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Markdown Trigger</strong></td>
+                <td>Reactive (when produce wilts)</td>
+                <td><strong>Proactive dynamic clearance discounts</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Vehicle Loading</strong></td>
+                <td>Unsegregated random stacking</td>
+                <td><strong>Multi-zone temp &amp; ethylene isolation</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Net Financial Gain</strong></td>
+                <td>$148,200 per 100T cycle</td>
+                <td class="badge-gain"><strong>$192,800 (+$44,600 Uplift)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="height: 340px; position: relative;">
+          <canvas id="comparisonChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explainable AI (XAI) Engine Section -->
+  <section class="section-explainable" id="explainable-ai">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge" style="background:rgba(34,197,94,0.15); color:#4ADE80; border-color:rgba(34,197,94,0.3);">
+          Transparent Intelligence
+        </span>
+        <h2 class="section-title">Explainable AI: Why Each Decision Is Made</h2>
+        <p class="section-subtitle">
+          Distributors never have to accept a "black box" prediction. FreshRoute provides clear, human-readable explanations behind every batch dispatch, price markdown, and vehicle assignment.
+        </p>
+      </div>
+
+      <div class="xai-interactive-container">
+        <!-- Left selectable batch list -->
+        <div class="xai-nav-list">
+          <div class="xai-card-btn active" data-batch="FR-809">
+            <div class="xai-card-meta">
+              <span class="xai-crop-tag">🥑 Haas Avocados</span>
+              <span class="xai-batch-id">Batch #FR-809</span>
+            </div>
+            <h4>Reroute to Metro Mart (3.5h) over Regional (11.5h)</h4>
+            <p>Prevents 34% in-transit softening while capturing a +14% spot price premium.</p>
+          </div>
+
+          <div class="xai-card-btn" data-batch="FR-814">
+            <div class="xai-card-meta">
+              <span class="xai-crop-tag">🍓 Strawberries</span>
+              <span class="xai-batch-id">Batch #FR-814</span>
+            </div>
+            <h4>Dynamic 15% Discount to Quick-Commerce Dark Stores</h4>
+            <p>Overcomes narrow 18-hour decay window to clear 1,800 kg within 4 hours.</p>
+          </div>
+
+          <div class="xai-card-btn" data-batch="FR-802">
+            <div class="xai-card-meta">
+              <span class="xai-crop-tag">🍅 Roma Tomatoes</span>
+              <span class="xai-batch-id">Batch #FR-802</span>
+            </div>
+            <h4>Reefer Zone 2 Segregation &amp; Truck Payload Consolidation</h4>
+            <p>Prevents ethylene gas damage to leafy greens and reduces deadhead transit miles.</p>
+          </div>
+
+          <div class="xai-card-btn" data-batch="FR-791">
+            <div class="xai-card-meta">
+              <span class="xai-crop-tag">🫑 Bell Peppers</span>
+              <span class="xai-batch-id">Batch #FR-791</span>
+            </div>
+            <h4>Spot Market Arbitrage to Wholesale Terminal B</h4>
+            <p>Extended 56-hour vitality allows capturing a 22% harvest shortage price surge.</p>
+          </div>
+        </div>
+
+        <!-- Right Detailed Explanation Box -->
+        <div class="xai-detail-box">
+          <div class="xai-detail-header">
+            <h3>Audit Trail: Haas Avocados <span style="font-size:0.85rem; color:#94A3B8; font-weight:normal;">(FR-809)</span></h3>
+            <span class="xai-confidence-pill">98.7% Optimal</span>
+          </div>
+
+          <div class="xai-factors-grid">
+            <div class="xai-factor-item">
+              <div class="xai-factor-label">Remaining Shelf-Life</div>
+              <div class="xai-factor-value">24 Hours</div>
+              <div class="xai-factor-impact">Critical Decay Zone</div>
+            </div>
+            <div class="xai-factor-item">
+              <div class="xai-factor-label">Destination Transit</div>
+              <div class="xai-factor-value">3.5 Hours (Metro)</div>
+              <div class="xai-factor-impact">Safe Margin 20.5h</div>
+            </div>
+            <div class="xai-factor-item">
+              <div class="xai-factor-label">Destination Spot Price</div>
+              <div class="xai-factor-value">$2.40 / kg</div>
+              <div class="xai-factor-impact">+14% vs Wholesaler</div>
+            </div>
+            <div class="xai-factor-item">
+              <div class="xai-factor-label">Vehicle Payload Match</div>
+              <div class="xai-factor-value">Reefer Zone 1 (6°C)</div>
+              <div class="xai-factor-impact">Optimal Respiration</div>
+            </div>
+          </div>
+
+          <div class="xai-breakdown-text">
+            <strong>FreshRoute Explainability Engine:</strong><br>
+            Traditional FIFO dispatch scheduled this batch for Regional Wholesaler #3, located 11.5 hours away. Given ambient heat and respiration kinetics, arriving after 11.5h would cause 34% skin browning and severe soft-spot rot, triggering mandatory contract price penalties.<br><br>
+            <strong>FreshRoute Optimization:</strong> Diverted this batch immediately to Metro Premium Mart (3.5 hours transit). Metro mart is experiencing an inventory deficit and guarantees instant same-day shelf placement at premium contract price, securing 100% saleable produce and eliminating $3,850 in avoidable waste.
+          </div>
+
+          <div class="xai-comparison-snippet">
+            <span>Baseline FIFO: Dispatched to Regional Terminal ➔ 34% Spoilage Loss ($3,850 lost)</span>
+            <span>FreshRoute: Allocated to Metro Mart ➔ 100% Sell-Through (+$3,850 preserved)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Architectural Capabilities Grid -->
+  <section class="section-features" id="features">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">Platform Capabilities</span>
+        <h2 class="section-title">Engineered for Cold Chain Precision</h2>
+        <p class="section-subtitle">
+          Six foundational modules working together to coordinate perishable inventory, transit physics, and market economics.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20"></path>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Biochemical Decay Modeling</h3>
+          <p>
+            Employs Arrhenius kinetic formulas to project exact remaining shelf life based on crop variety, ambient temperature, relative humidity, and cold chain duration.
+          </p>
+          <ul class="feature-checklist">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Calculates respiration rate curves
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              IoT data logger &amp; sensor sync
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Early fungal &amp; browning alerts
+            </li>
+          </ul>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+          </div>
+          <h3>Demand &amp; Price Arbitrage</h3>
+          <p>
+            Connects live wholesale market spot rates, terminal price swings, and supermarket contract SLAs to identify where each batch yields peak gross margin.
+          </p>
+          <ul class="feature-checklist">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Real-time terminal price scraping
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Contract penalty mitigation
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Quick-commerce surge matching
+            </li>
+          </ul>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <h3>Dynamic Markdown Engine</h3>
+          <p>
+            Triggers proactive discounts on perishable produce before appearance deteriorates, maximizing sell-through velocity and eliminating zero-dollar write-offs.
+          </p>
+          <ul class="feature-checklist">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Elasticity-based price stepping
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Automatic distributor margin floor
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Diverts near-expiry to juice processors
+            </li>
+          </ul>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <h3>Multi-Zone Reefer Routing</h3>
+          <p>
+            Optimizes truck compartment loading by temperature thresholds and ethylene gas sensitivities while routing around hot midday highway corridors.
+          </p>
+          <ul class="feature-checklist">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Dual-temp trailer load balancing
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Ethylene climacteric isolation
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              94%+ cubic payload utilization
+            </li>
+          </ul>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </div>
+          <h3>Explainable AI Audit Trails</h3>
+          <p>
+            Provides full transparency into every dispatch decision, listing economic parameters, decay curves, and avoided loss figures for warehouse supervisors.
+          </p>
+          <ul class="feature-checklist">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Human-readable decision cards
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Baseline vs Optimized comparison
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Operator override &amp; feedback loop
+            </li>
+          </ul>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon-box">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+              <line x1="4" y1="22" x2="4" y2="15"></line>
+            </svg>
+          </div>
+          <h3>ESG &amp; Landfill Impact Audit</h3>
+          <p>
+            Automatically tracks avoided food waste in metric tons, calculates Scope 3 greenhouse gas reductions, and generates audit-ready ESG sustainability reports.
+          </p>
+          <ul class="feature-checklist">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              GHG protocol certified calculations
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Water footprint savings tracking
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Exportable corporate ESG certificates
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive ROI & Impact Calculator -->
+  <section class="section-calculator" id="roi-calculator">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">Financial Impact</span>
+        <h2 class="section-title">Distributor ROI &amp; Spoilage Savings Calculator</h2>
+        <p class="section-subtitle">
+          Calculate the exact dollar recovery, profit expansion, and food waste reduction FreshRoute can unlock for your distribution volume.
+        </p>
+      </div>
+
+      <div class="calculator-card">
+        <!-- Input Sliders Side -->
+        <div class="calc-inputs-side">
+          <div class="calc-slider-box">
+            <div class="calc-slider-header">
+              <span class="calc-label">Monthly Produce Volume</span>
+              <span id="calcVolumeVal" class="calc-value-display">500 Tons/mo</span>
+            </div>
+            <input type="range" id="calcVolume" class="range-input" min="50" max="3000" value="500" step="50">
+          </div>
+
+          <div class="calc-slider-box">
+            <div class="calc-slider-header">
+              <span class="calc-label">Current Spoilage Rate</span>
+              <span id="calcSpoilageVal" class="calc-value-display">16%</span>
+            </div>
+            <input type="range" id="calcSpoilage" class="range-input" min="5" max="30" value="16" step="1">
+          </div>
+
+          <div class="calc-slider-box">
+            <div class="calc-slider-header">
+              <span class="calc-label">Average Produce Value</span>
+              <span id="calcPriceVal" class="calc-value-display">$1.80 / kg</span>
+            </div>
+            <input type="range" id="calcPrice" class="range-input" min="0.80" max="4.00" value="1.80" step="0.10">
+          </div>
+
+          <div style="font-size:0.85rem; color:#64748B; background:#F8FAFC; padding:1rem; border-radius:8px; border-left:3px solid var(--primary);">
+            💡 <strong>Distributor Fact:</strong> An average 500-ton distributor experiences $1.7M+ in annual preventable losses from late dispatches, misrouted near-expiry batches, and empty miles.
+          </div>
+        </div>
+
+        <!-- Output Metric Side -->
+        <div class="calc-results-side">
+          <div class="calc-result-header">
+            <h3>Projected Annual Value Recovered</h3>
+            <p>Net profit and sustainability upside via FreshRoute Intelligence</p>
+          </div>
+
+          <div class="calc-highlight-metric">
+            <div class="calc-metric-sub">Total Net Annual Profit Gain</div>
+            <div class="calc-big-number" id="calcOutputSavedValue">$1,467,360</div>
+            <div style="font-size:0.85rem; color:#86EFAC;">Direct bottom-line improvement</div>
+          </div>
+
+          <div class="calc-detail-grid">
+            <div class="calc-mini-stat">
+              <span>Food Waste Diverted</span>
+              <strong id="calcOutputFoodDiverted">787 Metric Tons</strong>
+            </div>
+            <div class="calc-mini-stat">
+              <span>CO₂e Avoided</span>
+              <strong id="calcOutputCo2">1,968 MT CO₂e</strong>
+            </div>
+            <div class="calc-mini-stat">
+              <span>Net Margin Lift</span>
+              <strong id="calcOutputMarginGain" style="color:#4ADE80;">+13.6%</strong>
+            </div>
+            <div class="calc-mini-stat">
+              <span>Platform Payback</span>
+              <strong id="calcOutputPayback">&lt; 18 Days</strong>
+            </div>
+          </div>
+
+          <button class="btn btn-accent" data-open-modal="demoModal" style="width:100%;">
+            Get Custom Distributor Assessment
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Distributor Case Studies & Industry Proof -->
+  <section class="section-case-studies" id="cases">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">Proven Results</span>
+        <h2 class="section-title">Trusted by Modern Food Supply Chains</h2>
+        <p class="section-subtitle">
+          See how commercial produce distributors, agricultural cooperatives, and cold chain carriers transformed operations.
+        </p>
+      </div>
+
+      <div class="case-grid">
+        <div class="case-card">
+          <span class="case-client-badge">Regional Wholesaler</span>
+          <div class="case-metric-stat">-82% Spoilage</div>
+          <div class="case-metric-label">Cut Berry &amp; Soft Fruit Losses in 60 Days</div>
+          <p class="case-quote">
+            "We were dumping nearly 18% of our berries during hot summer dispatches. FreshRoute’s shelf-life-aware allocation and automated 15-minute quick-commerce markdowns turned our highest risk category into our most profitable line."
+          </p>
+          <div class="case-author">
+            <div class="case-avatar">MR</div>
+            <div class="case-author-info">
+              <h5>Marco Ramirez</h5>
+              <p>VP of Logistics, SunValley Agro Distributors</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <span class="case-client-badge">Cold Chain Carrier</span>
+          <div class="case-metric-stat">94.8% Payload</div>
+          <div class="case-metric-label">Reefer Truck Load Utilization</div>
+          <p class="case-quote">
+            "Before FreshRoute, we were sending half-empty reefer trucks because dispatchers were terrified of ethylene cross-contamination. FreshRoute’s multi-zone compartment solver consolidated 28 runs per week, saving $380,000 in diesel."
+          </p>
+          <div class="case-author">
+            <div class="case-avatar">DK</div>
+            <div class="case-author-info">
+              <h5>David Kapur</h5>
+              <p>Fleet Director, Apex Cold Trans Lines</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <span class="case-client-badge">Grocery Aggregator</span>
+          <div class="case-metric-stat">+$2.1M Net</div>
+          <div class="case-metric-label">Annual Profit Increase Across 12 Hubs</div>
+          <p class="case-quote">
+            "The explainability feature is the game changer. Our dispatchers trust the system because it doesn't just bark orders—it explains why a batch is rerouted and how much profit it saves. Adoption was 100% within two weeks."
+          </p>
+          <div class="case-author">
+            <div class="case-avatar">SL</div>
+            <div class="case-author-info">
+              <h5>Sarah Lindqvist</h5>
+              <p>Head of Produce Operations, UrbanHarvest Co.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive FAQ Section -->
+  <section class="section-faq" id="faq">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-badge">Got Questions?</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">
+          Everything you need to know about integrating FreshRoute into your distribution operations.
+        </p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>How does FreshRoute determine remaining shelf life without physical lab tests?</span>
+            <span class="faq-icon">▾</span>
+          </button>
+          <div class="faq-answer" style="max-height: 200px;">
+            FreshRoute combines historical crop respiration profiles (Arrhenius kinetics) with intake quality grading, ambient temperature logs from transit IoT loggers, and time-from-harvest data. This delivers high-accuracy shelf-life estimates updated dynamically across every kilometer of the journey.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How does the dynamic discount model avoid cannibalizing full-price retail sales?</span>
+            <span class="faq-icon">▾</span>
+          </button>
+          <div class="faq-answer">
+            FreshRoute only triggers discounts for batches approaching their decay horizon where standard wholesale demand cannot absorb the volume in time. Discounts are selectively targeted to alternative channels—such as quick-commerce flash sales, institutional cafeterias, or industrial juice processors—protecting primary supermarket pricing agreements.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can FreshRoute integrate with our existing WMS and ERP systems?</span>
+            <span class="faq-icon">▾</span>
+          </button>
+          <div class="faq-answer">
+            Yes. FreshRoute provides enterprise REST APIs and native connectors for SAP SCM, Oracle NetSuite, Blue Yonder, Manhattan Associates, and custom warehouse management systems. Ingestion feeds can also be synchronized via automated CSV/EDI batch uploads.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How does the platform prevent ethylene gas cross-contamination in reefer trucks?</span>
+            <span class="faq-icon">▾</span>
+          </button>
+          <div class="faq-answer">
+            Our multi-compartment vehicle solver catalogs every produce batch by its ethylene emission level (climacteric) and ethylene sensitivity. The optimizer automatically restricts co-loading incompatible crops into the same trailer airflow zone, ensuring crisp greens are never damaged by ripening tomatoes or avocados.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How long does it take for a produce distributor to go live?</span>
+            <span class="faq-icon">▾</span>
+          </button>
+          <div class="faq-answer">
+            Standard deployments take between 7 to 14 days. We begin by shadowing your dispatch team with historical data to validate baseline savings, configure your vehicle fleet profiles, and connect your destination delivery windows.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- High Conversion CTA Banner -->
+  <section class="section-cta-banner">
+    <div class="container cta-banner-content">
+      <h2>Transform Perishable Losses Into Guaranteed Profit Today</h2>
+      <p>
+        Join forward-thinking distributors eliminating avoidable food waste, reducing freight miles, and delivering fresher produce to thousands of retail doors.
+      </p>
+      <div class="cta-buttons">
+        <button class="btn btn-accent" data-open-modal="demoModal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Schedule a 15-Minute Live Demo
+        </button>
+        <a href="#simulator" class="btn btn-outline-white">
+          Explore Simulator Again
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <img src="FreshRoute Eco Delivery Logo.png" alt="FreshRoute Logo">
+        <p>
+          FreshRoute is the decision-intelligence engine making perishable produce distribution smarter, more efficient, and more sustainable.
+        </p>
+        <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:#34D399;">
+          <span class="status-dot"></span>
+          <span>All Logistics Optimization Nodes Operational (99.98% SLA)</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="#simulator">Live Simulator</a></li>
+          <li><a href="#comparison">Baseline Benchmarks</a></li>
+          <li><a href="#explainable-ai">Explainable AI Engine</a></li>
+          <li><a href="#features">Reefer Truck Routing</a></li>
+          <li><a href="#roi-calculator">Distributor ROI Tool</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Produce Categories</h5>
+        <ul>
+          <li><a href="#simulator">Berries &amp; Soft Fruits</a></li>
+          <li><a href="#simulator">Tropicals &amp; Avocados</a></li>
+          <li><a href="#simulator">Solanaceous (Tomatoes)</a></li>
+          <li><a href="#simulator">Leafy Greens &amp; Brassica</a></li>
+          <li><a href="#simulator">Citrus &amp; Stone Fruits</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Sustainability &amp; ESG</h5>
+        <ul>
+          <li><a href="#problem">Food Loss Prevention</a></li>
+          <li><a href="#roi-calculator">Scope 3 CO₂e Accounting</a></li>
+          <li><a href="#cases">Landfill Diversion Audit</a></li>
+          <li><a href="#features">Cold Chain Energy Efficiency</a></li>
+          <li><a href="#">Security &amp; SOC2 Type II</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>
+        &copy; 2026 FreshRoute Technologies Inc. All rights reserved. Save Freshness. Reduce Waste. Maximize Profit.
+      </div>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">API Documentation</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Demo Booking Request -->
+  <div class="modal-overlay" id="demoModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Schedule a FreshRoute Walkthrough</h3>
+        <span class="modal-close-btn" id="closeModalBtn">&times;</span>
+      </div>
+
+      <form class="modal-body" id="demoRequestForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="demoName">Full Name *</label>
+            <input type="text" id="demoName" class="form-control" placeholder="e.g. Elena Rostova" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="demoCompany">Distributor / Company *</label>
+            <input type="text" id="demoCompany" class="form-control" placeholder="e.g. Pacific Produce Co." required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="demoEmail">Business Email *</label>
+            <input type="email" id="demoEmail" class="form-control" placeholder="elena@pacificproduce.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="demoPhone">Phone Number</label>
+            <input type="tel" id="demoPhone" class="form-control" placeholder="+1 (555) 234-5678">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="demoVolume">Estimated Monthly Produce Volume</label>
+          <select id="demoVolume" class="form-control">
+            <option value="50-200">50 - 200 Metric Tons</option>
+            <option value="200-1000" selected>200 - 1,000 Metric Tons</option>
+            <option value="1000-5000">1,000 - 5,000 Metric Tons</option>
+            <option value="5000+">5,000+ Metric Tons</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="demoNote">Primary Distribution Pain Point</label>
+          <textarea id="demoNote" class="form-control" rows="3" placeholder="Tell us about your main challenges (e.g. berry spoilage, traffic delays, reefer capacity utilization, supermarket markdowns)"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:0.9rem;">
+          Request 15-Minute Tailored Session
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast" id="toastContainer"></div>
+
+  <!-- Main Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>
